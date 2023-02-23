@@ -3,7 +3,7 @@
 # dependencies
 /node_modules
 /dist
-/example/ml-demo-app/node_modules
+/examples/ml-demo-app/node_modules
 /.pnp
 .pnp.js
 
