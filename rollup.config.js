@@ -1,11 +1,13 @@
+import babel from '@rollup/plugin-babel';
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
 import dts from "rollup-plugin-dts";
 import postcss from "rollup-plugin-postcss";
+import terser from "@rollup/plugin-terser";
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 import packageJson from "./package.json" assert { type: "json" };
-console.log("🚀 ~ file: rollup.config.js:7 ~ packageJson:", packageJson)
 
 export default [
     {
@@ -23,11 +25,22 @@ export default [
             },
         ],
         plugins: [
+            babel({
+                exclude: 'node_modules/**',
+                babelHelpers: 'bundled',
+            }),
+            peerDepsExternal(),
             resolve(),
             commonjs(),
-            typescript({ tsconfig: "./tsconfig.json" }),
-            postcss()
+            typescript({
+                tsconfig: './tsconfig.json',
+                sourceMap: true,
+                declaration: true,
+            }),
+            postcss(),
+            terser(),
         ],
+        external: ['react', 'react-dom'], // add react-bootstrap to external
     },
     {
         input: "dist/esm/types/index.d.ts",

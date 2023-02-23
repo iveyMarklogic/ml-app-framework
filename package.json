@@ -9,15 +9,24 @@
   },
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "bootstrap": "^5.2.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^2.7.2",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
+    "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@types/react": "^18.0.28",
+    "@types/react-bootstrap": "^0.32.32",
     "node-sass": "^8.0.0",
-    "react": "^18.2.0",
     "rollup": "^3.17.2",
     "rollup-plugin-dts": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-typescript": "^1.0.1",
     "tslib": "^2.5.0",
@@ -28,5 +37,8 @@
   "files": [
     "dist"
   ],
-  "types": "dist/index.d.ts"
+  "types": "dist/index.d.ts",
+  "dependencies": {
+    "react-icons": "^4.7.1"
+  }
 }
