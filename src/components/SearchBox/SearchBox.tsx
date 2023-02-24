@@ -2,9 +2,10 @@ import React from "react";
 import {Form, InputGroup} from "react-bootstrap";
 import {FaSearch} from 'react-icons/fa';
 import styles from "./SearchBox.module.scss";
+import myImage from "../../assets/img/test.jpg";
 
 export interface SearchBoxProps {
-    value: string;
+    value?: string;
     placeholder?: string;
     className?: string;
     ariaLabel?: string;
@@ -29,10 +30,11 @@ const SearchBox = (props: SearchBoxProps) => {
                     className={styles.searchInputContainer}
                     onChange={props.onChange}
                 />
-                <InputGroup.Text className={styles.searchActionContainer} onClick={props.onClick} tabIndex={0}>
+                <InputGroup.Text className={styles.searchActionContainer} onClick={props.onClick} tabIndex={0} data-testid="action-icon-container">
                     <FaSearch onClick={props.onClick} />
                 </InputGroup.Text>
             </InputGroup>
+            <img src={myImage} alt="My Image" />
         </div>
     );
 };

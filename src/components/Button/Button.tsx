@@ -11,8 +11,9 @@ export interface ButtonProps {
 
 const Button = (props: ButtonProps) => {
     return (
-        <div>
+        <div className={styles.buttonContainer}>
             <BootstrapButton
+                data-testid="button"
                 variant={props.variant}
                 onClick={props.onClick}>
                 {props.label}
