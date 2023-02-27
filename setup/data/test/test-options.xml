@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<search:options xml:lang="zxx" xmlns:search="http://marklogic.com/appservices/search">
+
+  <search:search-option>unfiltered</search:search-option>
+
+  <search:transform-results apply="snippet">
+    <per-match-tokens>30</per-match-tokens>
+    <max-matches>4</max-matches>
+    <max-snippet-chars>200</max-snippet-chars>
+  </search:transform-results>
+  
+</search:options>
