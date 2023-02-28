@@ -6,11 +6,13 @@ export default
     ],
     testPathIgnorePatterns: [
         '/node_modules/',
-        '/examples/'
+        '/examples/',
+        '/server/',
+        '/setup/'
     ],
     moduleNameMapper: {
         '\\.(scss|sass|css)$': 'identity-obj-proxy',
-        '\\.(jpg|jpeg|png|gif)$': '<rootDir>/__mocks__/fileMock.js'
+        '\\.(jpg|jpeg|png|gif)$': '<rootDir>/src/__mocks__/fileMock.js'
     },
     transform: {
         '^.+\\.[jt]sx?$': 'babel-jest',
