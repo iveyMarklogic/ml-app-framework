@@ -1,0 +1,6 @@
+/dist
+/coverage
+/setup
+/server
+/_mocks_
+rollup.config.js

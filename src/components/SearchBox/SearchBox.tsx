@@ -1,27 +1,28 @@
-import React from "react";
-import {Form, InputGroup} from "react-bootstrap";
-import {FaSearch} from 'react-icons/fa';
-import styles from "./SearchBox.module.scss";
-import myImage from "../../assets/img/test.jpg";
+
+import React from 'react'
+import { Form, InputGroup } from 'react-bootstrap'
+import { FaSearch } from 'react-icons/fa'
+import styles from './SearchBox.module.scss'
+import myImage from '../../assets/img/test.jpg'
 
 export interface SearchBoxProps {
-    value?: string;
-    placeholder?: string;
-    className?: string;
-    ariaLabel?: string;
-    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-    onClick?: () => void;
-    onEnter?: () => void;
+  value?: string
+  placeholder?: string
+  className?: string
+  ariaLabel?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onClick?: () => void
+  onEnter?: () => void
 }
 
-const SearchBox = (props: SearchBoxProps) => {
-    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {
         if (event.key === 'Enter') {
-            props.onEnter?.();
+            props.onEnter?.()
         }
     }
     return (
-        <div className={`${styles.searchBox} ${props.className}`}>
+        <div className={`${styles.searchBox} ${props.className?.toString()}`}>
             <InputGroup onKeyDown={handleKeyDown}>
                 <Form.Control
                     value={props.value}
@@ -36,7 +37,7 @@ const SearchBox = (props: SearchBoxProps) => {
             </InputGroup>
             <img src={myImage} alt="My Image" />
         </div>
-    );
-};
+    )
+}
 
-export default SearchBox;
+export default SearchBox
