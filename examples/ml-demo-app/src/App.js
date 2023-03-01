@@ -1,12 +1,21 @@
 import { Button, SearchBox } from "ml-application-framework"
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import MLContext from "./MLContext";
 import './App.css';
 
-function App() {
+const App = () => {
+
+  const mlContext = useContext(MLContext);
+
   const [text, setText] = useState("")
   const handleClick = (text) => {
     alert(text);
   }
+
+  useEffect(() => {
+    mlContext.getSearch("");
+  }, []);
+
   return (
     <div className="App">
       <Button label="Click Me" onClick={handleClick} variant="info" />
@@ -18,6 +27,7 @@ function App() {
         onClick={() => handleClick(`This is search box Action button "${text}"`)}
         onEnter={() => handleClick(`This is search box Enter action "${text}"`)}
       />
+      <div>Number of results: {mlContext.searchResponse ?  + JSON.stringify(mlContext.searchResponse.total) : 0}</div>
     </div>
   );
 }
