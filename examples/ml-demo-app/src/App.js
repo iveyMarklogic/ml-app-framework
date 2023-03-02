@@ -8,26 +8,23 @@ const App = () => {
   const mlContext = useContext(MLContext);
 
   const [text, setText] = useState("")
-  const handleClick = (text) => {
-    alert(text);
+  const handleClick = () => {
+    mlContext.getSearch(text);
   }
-
-  useEffect(() => {
-    mlContext.getSearch("");
-  }, []);
 
   return (
     <div className="App">
       <Button label="Click Me" onClick={handleClick} variant="info" />
       <SearchBox
         value={text}
-        placeholder="Enter text (🦾)"
+        placeholder="Enter query (🦾)"
         className="mt-3"
         onChange={(e) => setText(e.target.value)}
-        onClick={() => handleClick(`This is search box Action button "${text}"`)}
-        onEnter={() => handleClick(`This is search box Enter action "${text}"`)}
+        onClick={handleClick}
+        onEnter={handleClick}
       />
       <div>Number of results: {mlContext.searchResponse ?  + JSON.stringify(mlContext.searchResponse.total) : 0}</div>
+      
     </div>
   );
 }

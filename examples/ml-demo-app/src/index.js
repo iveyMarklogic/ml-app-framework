@@ -12,6 +12,7 @@ root.render(
     scheme="http"
     host="localhost"
     port="4000"
+    auth={{ username: "ml-app-demo-user", password: "password" }}
   >
     <App />
   </MLProvider>
