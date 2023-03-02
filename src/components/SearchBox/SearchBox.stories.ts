@@ -17,5 +17,19 @@ type Story = StoryObj<typeof meta>
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
 export const Search: Story = {
     args: {
+        menuItems: [
+            {
+                value: ['person', 'organization'],
+                label: 'All Entities'
+            },
+            {
+                value: ['person'],
+                label: 'Person'
+            },
+            {
+                value: ['organization'],
+                label: 'Organization'
+            }
+        ]
     }
 }

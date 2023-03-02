@@ -3,20 +3,27 @@ import axios from "axios";
 
 const MLContext = createContext({
   searchResponse: "",
-  getSearch: (query) => { }
+  getSearch: (query, collection) => { }
 });
 
 export const MLProvider = (props) => {
 
   const [searchResponse, setSearchResponse] = useState("");
 
-  const getSearch = useCallback(async (query) => {
-    const endpoint = props.scheme + "://" + props.host + ":" + props.port + '/v1/search?q=' + query + '&format=json';
+  const getSearch = useCallback(async (query, collection) => {
+    const collectionQuery = collection && collection.length > 0 ? `collection=${collection.join('&collection=')}` : '';
+    const baseUrl = `${props.scheme}://${props.host}:${props.port}/v1/search?${collectionQuery}`
+    const params = {
+      q: query,
+      format: 'json',
+    }
+
     try {
       const options = {
+        params: params,
         auth: props.auth
       }
-      const response = await axios.get(endpoint, options);
+      const response = await axios.get(baseUrl, options);
       if (response && response.status === 200) {
         setSearchResponse(response.data);
       }

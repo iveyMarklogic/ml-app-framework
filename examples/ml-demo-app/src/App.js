@@ -1,15 +1,34 @@
 import { Button, SearchBox } from "ml-application-framework"
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import MLContext from "./MLContext";
 import './App.css';
+
+const items = [
+  {
+    value: ['person', 'organization'],
+    label: 'All Entities'
+  },
+  {
+    value: ['person'],
+    label: 'Person'
+  },
+  {
+    value: ['organization'],
+    label: 'Organization'
+  }
+]
 
 const App = () => {
 
   const mlContext = useContext(MLContext);
 
   const [text, setText] = useState("")
+  const [menuIndex, setMenuIndex] = useState(0)
   const handleClick = () => {
-    mlContext.getSearch(text);
+    mlContext.getSearch(text, items[menuIndex].value);
+  }
+  const handleMenuClick = (index) => {
+    setMenuIndex(index)
   }
 
   return (
@@ -22,9 +41,11 @@ const App = () => {
         onChange={(e) => setText(e.target.value)}
         onClick={handleClick}
         onEnter={handleClick}
+        menuItems={items}
+        onChangeMenu={handleMenuClick}
       />
-      <div>Number of results: {mlContext.searchResponse ?  + JSON.stringify(mlContext.searchResponse.total) : 0}</div>
-      
+      <div>Number of results: {mlContext.searchResponse ? + JSON.stringify(mlContext.searchResponse.total) : 0}</div>
+
     </div>
   );
 }
