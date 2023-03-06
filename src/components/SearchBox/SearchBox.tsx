@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Dropdown, DropdownButton, Form, InputGroup } from 'react-bootstrap'
 import { FaSearch } from 'react-icons/fa'
-import styles from './SearchBox.module.scss'
+import styles from './searchBox.module.scss'
 
 export interface SearchBoxMenuItem {
     label: string
