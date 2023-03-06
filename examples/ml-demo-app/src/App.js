@@ -22,9 +22,15 @@ const App = () => {
 
   const mlContext = useContext(MLContext);
 
-  const [text, setText] = useState("")
-  const [menuIndex, setMenuIndex] = useState(0)
-  const handleClick = () => {
+  const [text, setText] = useState("");
+  const [menuIndex, setMenuIndex] = useState(0);
+
+  const handleClick = (event) => {
+    console.log(event);
+    alert("Button '" + event.target.innerHTML + "' clicked!");
+  }
+  
+  const handleSearch = () => {
     mlContext.getSearch(text, items[menuIndex].value);
   }
   const handleMenuClick = (index) => {
@@ -39,8 +45,8 @@ const App = () => {
         placeholder="Enter query (🦾)"
         className="mt-3"
         onChange={(e) => setText(e.target.value)}
-        onClick={handleClick}
-        onEnter={handleClick}
+        onClick={handleSearch}
+        onEnter={handleSearch}
         menuItems={items}
         onChangeMenu={handleMenuClick}
       />
