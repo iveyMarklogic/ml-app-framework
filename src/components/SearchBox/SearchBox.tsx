@@ -12,10 +12,17 @@ export interface SearchBoxMenuItem {
 
 export interface SearchBoxProps {
     value?: string
+    menuVariant?: 'info' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'dark' | 'light'
+    rightButtonVariant?: 'default' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info' | 'dark' | 'light'
     placeholder?: string
     className?: string
     ariaLabel?: string
     menuItems?: SearchBoxMenuItem[]
+    containerStyle?: React.CSSProperties
+    dropdownButtonStyle?: React.CSSProperties
+    dropdownItemStyle?: React.CSSProperties
+    rightButtonStyle?: React.CSSProperties
+    boxStyle?: React.CSSProperties
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
     onChangeMenu?: (menuIndex: number) => void
     onClick?: () => void
@@ -47,20 +54,25 @@ const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
                 key={`item-${item.label}`}
                 eventKey={idex}
                 active={active}
+                style={props.dropdownItemStyle}
             >
                 {item?.label}
             </Dropdown.Item>
         )
     })
     return (
-        <div className={`${styles.searchBox} ${props.className?.toString()}`}>
+        <div
+            className={`${styles.searchBox} ${props.className?.toString()}`}
+            style={props.containerStyle}
+        >
             <InputGroup onKeyDown={handleKeyDown}>
                 {menuItems.length > 0 &&
                     <DropdownButton
-                        variant="info"
+                        variant={props.menuVariant}
                         title={menuItems[selected]?.label}
                         data-testid="searchBoxDropdown"
                         id="searchBoxDropdown"
+                        style={props.dropdownButtonStyle}
                         onSelect={handleSelect}
                     >
                         {menuElements}
@@ -72,8 +84,15 @@ const SearchBox: React.FC<SearchBoxProps> = (props: SearchBoxProps) => {
                     className={styles.searchInputContainer}
                     onChange={props.onChange}
                     ref={searchInputRef}
+                    style={props.boxStyle}
                 />
-                <InputGroup.Text className={styles.searchActionContainer} onClick={props.onClick} tabIndex={0} data-testid="action-icon-container">
+                <InputGroup.Text
+                    className={props.rightButtonVariant !== undefined && props.rightButtonVariant !== 'default' ? `bg-${props.rightButtonVariant}` : styles.searchActionContainer}
+                    onClick={props.onClick}
+                    tabIndex={0}
+                    data-testid="action-icon-container"
+                    style={props.rightButtonStyle}
+                >
                     <FaSearch />
                 </InputGroup.Text>
             </InputGroup>

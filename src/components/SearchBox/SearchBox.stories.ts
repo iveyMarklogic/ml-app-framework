@@ -8,14 +8,27 @@ const meta = {
     title: 'ML-Application-Framework/SearchBox',
     component: SearchBox,
     tags: ['autodocs'],
-    argTypes: { }
+    argTypes: {
+        menuVariant: {
+            table: {
+                type: {
+                    summary: 'something short',
+                    detail: 'something really really long'
+                }
+            },
+            control: {
+                type: 'select',
+                options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
+            }
+        }
+    }
 } satisfies Meta<typeof SearchBox>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 // More on writing stories with args: https://storybook.js.org/docs/7.0/react/writing-stories/args
-export const Search: Story = {
+export const Actions: Story = {
     args: {
         menuItems: [
             {

@@ -41,6 +41,8 @@ const App = () => {
     <div className="App">
       <Button label="Click Me" onClick={handleClick} variant="info" />
       <SearchBox
+        menuVariant="info"
+        rightButtonVariant="default"
         value={text}
         placeholder="Enter query (🦾)"
         className="mt-3"
