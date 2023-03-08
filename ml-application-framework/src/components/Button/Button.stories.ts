@@ -10,6 +10,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {
         variant: {
+            defaultValue: { summary: '"primary"' },
             control: {
                 type: 'select',
                 options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark', 'link']

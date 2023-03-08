@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react'
-// import 'bootstrap/dist/css/bootstrap.min.css';
 
 import SearchBox from './SearchBox'
 
@@ -10,17 +9,12 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {
         menuVariant: {
-            table: {
-                type: {
-                    summary: 'something short',
-                    detail: 'something really really long'
-                }
-            },
-            control: {
-                type: 'select',
-                options: ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark']
-            }
+            defaultValue: { summary: '"primary"' }
+        },
+        rightButtonVariant: {
+            defaultValue: { summary: '"default"' }
         }
+
     }
 } satisfies Meta<typeof SearchBox>
 
