@@ -81,6 +81,8 @@
   ],
   "types": "dist/index.d.ts",
   "dependencies": {
+    "@textea/json-viewer": "2.14.1",
+    "jsonpath-plus": "^7.2.0",
     "react-icons": "^4.7.1"
   }
 }
